@@ -60,6 +60,66 @@
       "cost": 0,
       "services": [],
       "id": 9
+    },
+    {
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "name": "Mycon",
+      "budget": "12000",
+      "cost": 0,
+      "services": [],
+      "id": 10
+    },
+    {
+      "cost": 0,
+      "services": [],
+      "id": 11
+    },
+    {
+      "name": "1",
+      "budget": "1",
+      "category": {
+        "id": "1",
+        "name": "Infraestrutura"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 12
+    },
+    {
+      "name": "1",
+      "budget": "1",
+      "category": {
+        "id": "1",
+        "name": "Infraestrutura"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 13
+    },
+    {
+      "name": "1",
+      "budget": "1",
+      "category": {
+        "id": "1",
+        "name": "Infraestrutura"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 14
+    },
+    {
+      "name": "1",
+      "budget": "2222",
+      "category": {
+        "id": "1",
+        "name": "Infraestrutura"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 15
     }
   ],
   "categories": [

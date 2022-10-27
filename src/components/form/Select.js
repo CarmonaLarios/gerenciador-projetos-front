@@ -16,7 +16,7 @@ function Select({text, name, options, handleOnChange, value}) {
                             key={option.id}
                         >
                             {option.name}
-                        </option>    
+                        </option>           
                     ))}
             </select>
         </div>
