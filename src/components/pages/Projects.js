@@ -6,10 +6,13 @@ import LinkButton from "../layout/LinkButton"
 import ProjectCard from "../project/ProjectCard"
 import styles from "./Projects.module.css"
 import { useState, useEffect } from "react"
+import API from '../../Api/api'
+
 
 function Projects(){
     const [projects, setProjects] = useState([])
     const [removeLoading, setRemoveLoading] = useState(false)
+    const [projectMessage, setProjectMessage] = useState('')
     
     const location = useLocation()
     let message = ''
@@ -19,7 +22,7 @@ function Projects(){
     }
 
     useEffect(()=>{
-      fetch('http://localhost:5000/projects', {
+      fetch( `http://localhost:5000/projects`, {
         method: 'GET',
         headers:{
           'Content-Type': 'application/json',
@@ -27,11 +30,31 @@ function Projects(){
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data + " data ")
         setProjects(data)
         setRemoveLoading(true)
       })
-      .catch(err =>console.log(err))
+      .catch(err => {
+        console.log(API)
+        console.log(err)
+      })
     },[])
+
+    function removeProject(id){
+       fetch(`http://localhost:5000/projects/${id}`,{
+          method: 'DELETE',
+          headers:{
+            'Content-Type': 'application/json',
+          }
+        }
+       )
+       .then(resp => resp.json())
+       .then(data => {
+          setProjects(projects.filter(project => project.id !== id))
+          setProjectMessage('Project has removed sucessfully!')
+       })
+       .catch(err => console.log(err))
+    }
 
     return (
       <div className={styles.project_container}>
@@ -40,6 +63,7 @@ function Projects(){
           <LinkButton to="/newproject" text="Criar projeto"/>
         </div>
         {message && <Message type="sucess" message={message}/>}
+        {projectMessage && <Message type="sucess" message={projectMessage}/>}
         <Container customClass="start">
           {projects.length > 0 &&
             projects.map(project => ( 
@@ -49,6 +73,7 @@ function Projects(){
                 budget={project.budget}
                 category={project.category.name}
                 key={project.id}
+                handleRemove={removeProject}
               />
             ))}
             {!removeLoading && <Loading/>}
