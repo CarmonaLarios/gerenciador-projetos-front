@@ -6,7 +6,7 @@ import LinkButton from "../layout/LinkButton"
 import ProjectCard from "../project/ProjectCard"
 import styles from "./Projects.module.css"
 import { useState, useEffect } from "react"
-import API from '../../Api/api'
+const {REACT_APP_API_BASE_URL} = process.env
 
 
 function Projects(){
@@ -22,7 +22,7 @@ function Projects(){
     }
 
     useEffect(()=>{
-      fetch( `http://localhost:5000/projects`, {
+      fetch( `${REACT_APP_API_BASE_URL}/projects`, {
         method: 'GET',
         headers:{
           'Content-Type': 'application/json',
@@ -35,13 +35,12 @@ function Projects(){
         setRemoveLoading(true)
       })
       .catch(err => {
-        console.log(API)
         console.log(err)
       })
     },[])
 
     function removeProject(id){
-       fetch(`http://localhost:5000/projects/${id}`,{
+       fetch(`${REACT_APP_API_BASE_URL}/projects/${id}`,{
           method: 'DELETE',
           headers:{
             'Content-Type': 'application/json',
