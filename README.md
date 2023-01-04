@@ -7,3 +7,4 @@ Developed a front-end, to show a concept of a system that manages software devel
 - Javascript
 - CSS
 - HTML
+- JSON Server
